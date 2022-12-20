@@ -1,17 +1,37 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Survey from './pages/Survey/index';
+import Home from './pages/Home/index';
+import Error from './components/Error';
+import Header from './components/Header/index';
+import Results from './pages/Results/index';
+import Freelances from './pages/Freelances/index';
+import { ThemeProvider, SurveyProvider } from './utils/context';
+import GlobalStyle from './utils/style/GlobalStyle';
+import Footer from './components/Footer';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+ReactDOM.render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <ThemeProvider>
+                <SurveyProvider>
+                    <GlobalStyle />
+                    <Header />
+                    <Routes>
+                        <Route path="*" element={<Error />} />
+                        <Route exact path="/" element={<Home />} />
+                        <Route path="/freelances" element={<Freelances />} />
+                        <Route path="/results" element={<Results />} />
+                        <Route
+                            path="/survey/:questionNumber"
+                            element={<Survey />}
+                        />
+                    </Routes>
+                    <Footer />
+                </SurveyProvider>
+            </ThemeProvider>
+        </BrowserRouter>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

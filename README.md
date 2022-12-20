@@ -1,3 +1,7 @@
+# Description globale
+
+Ce projet est ma version de tp react Shiny d'openclassroom disponible [ici](https://openclassrooms.com/fr/courses/7150606-creez-une-application-react-complete)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
